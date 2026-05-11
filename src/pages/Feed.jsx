@@ -209,10 +209,25 @@ const Feed = () => {
                     </p>
 
                     <div className="space-y-2.5 text-sm border-t border-gray-50 dark:border-gray-800 pt-4">
-                      <div className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
-                        <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>{item.location} {item.landmark && <span className="text-xs text-gray-500">({item.landmark})</span>}</span>
-                      </div>
+                      {item.lat && item.lng ? (
+                        <a 
+                          href={`https://www.google.com/maps/dir/?api=1&destination=${item.lat},${item.lng}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-start gap-2 text-primary font-medium hover:underline p-2 bg-primary/5 rounded-lg border border-primary/10 transition-colors group"
+                        >
+                          <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5 group-hover:animate-bounce" />
+                          <div>
+                            <span>{item.location} {item.landmark && <span className="text-xs text-gray-500">({item.landmark})</span>}</span>
+                            <div className="text-[10px] text-primary/70 font-bold uppercase mt-0.5 tracking-wider">🚀 Tap to Navigate Live</div>
+                          </div>
+                        </a>
+                      ) : (
+                        <div className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
+                          <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                          <span>{item.location} {item.landmark && <span className="text-xs text-gray-500">({item.landmark})</span>}</span>
+                        </div>
+                      )}
                       {item.phone && !item.is_collected && (
                         <a href={`tel:${item.phone}`} className="flex items-center gap-2 text-primary hover:underline font-medium">
                           <Phone className="w-4 h-4 flex-shrink-0" />

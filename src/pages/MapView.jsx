@@ -153,9 +153,16 @@ const MapView = () => {
                   <div className="p-1 font-sans">
                     <h4 className="font-bold text-base m-0 text-gray-900">{item.item_name}</h4>
                     <p className="text-sm text-gray-600 mt-1">{item.location}</p>
-                    <div className="mt-2 pt-2 border-t flex justify-between items-center">
-                       <span className="capitalize text-xs font-bold px-2 py-0.5 rounded bg-gray-100">{item.category}</span>
-                       <a href={`/feed`} className="text-xs text-primary font-bold">View Details →</a>
+                    <div className="mt-3 pt-2 border-t flex flex-col gap-2">
+                       <span className="capitalize text-xs font-bold inline-block px-2 py-0.5 rounded bg-gray-100 text-center w-fit">{item.category}</span>
+                       <a 
+                         href={`https://www.google.com/maps/dir/?api=1&destination=${item.lat},${item.lng}`} 
+                         target="_blank" 
+                         rel="noopener noreferrer"
+                         className="w-full text-center text-white bg-primary rounded px-3 py-1.5 text-xs font-bold hover:brightness-110 no-underline block"
+                       >
+                         🚀 Navigate to Pin
+                       </a>
                     </div>
                   </div>
                 </Popup>
