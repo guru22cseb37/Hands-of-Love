@@ -1,32 +1,27 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronDown, Heart, ArrowRight } from 'lucide-react';
 import ImpactDashboard from './Dashboard';
 import { useLanguage } from '../lib/LanguageContext';
+import heroBg from '../assets/hero_bg.png';
 
 const Home = () => {
-  const videoRef = useRef(null);
   const { t } = useLanguage();
 
   return (
     <div className="relative overflow-hidden bg-background dark:bg-background-dark">
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden flex items-center justify-center text-center px-4">
-        {/* Background Video */}
-        <div className="absolute inset-0 w-full h-full object-cover">
-          <div className="absolute inset-0 bg-black/60 z-10"></div>
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-delivering-a-box-of-food-41031-large.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        {/* Masterpiece Hero Background */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+            style={{ backgroundImage: `url(${heroBg})` }}
+          />
+          {/* Dual layer gradients for text pop and aesthetic framing */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/20 via-transparent to-yellow-900/20 z-10"></div>
         </div>
 
         {/* Content */}
